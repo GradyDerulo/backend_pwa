@@ -26,7 +26,7 @@ const PORT = process.env.PORT || 5000;
 
 
 // Middleware
-app.use(cors());
+/* app.use(cors()); */
 app.use(express.json());
 app.use(cookieParser()); //Obligatoire pour lire req.cookies
 
@@ -50,7 +50,12 @@ ___________________________________________________________________
  */
 
 
-
+app.use(cors({
+  origin: "https://client-pwa.onrender.com", // ou 3000 selon votre port React
+  credentials: true, // IMPORTANT: autoriser les cookies
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 
 // Routes
